@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from functions import *
 
 app = Flask(__name__)
 
@@ -6,7 +7,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/', methods=['GETUSERNAME'])
+@app.route('/', methods=['POST', 'GET'])
 def getUsername():
     text = request.form['text']
     processed_text = text.trim()
