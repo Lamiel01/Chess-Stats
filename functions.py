@@ -1,14 +1,24 @@
 LICHESS_TOKEN = 'YOUR TOKEN'
+import json
 import berserk
 
 session = berserk.TokenSession(LICHESS_TOKEN)
 client = berserk.Client(session=session)
 
+
+"""
+with open("data_file.json", "r") as read_file:
+    data = json.load(read_file)
+"""
+
 name = 'Lamiel01'
 #name = 'P4ssion'
 
 def test(name) -> None:
-    print(client.users.get_public_data(name))
+    data = client.users.get_public_data(name)
+    print(type(client.users.get_public_data(name)))
+    print(client.users.get_puzzle_activity(name))
+    return 1
 
 def getBasicInfo(name) -> tuple:
     info = client.users.get_public_data(name)
@@ -42,9 +52,4 @@ def rapid(name) -> tuple:
     GAMES = info['perfs']['rapid']['games']
     return RATING, GAMES
 
-#print(f'The basic info of {name} is: BLITZ  RAPID PUZZLE')
-#print(getBasicInfo(name))
-print(f'El jugador {name} tiene en blitz: (rating, partidas jugadas) ' ,blitz(name))
-print(f'El jugador {name} tiene en rapid: (rating, partidas jugadas) ' ,rapid(name))
-print(f'El jugador {name} tiene en bullet: (rating, partidas jugadas) ' ,bullet(name))
-#print(getBasicsStats(name))
+print(test(name))
