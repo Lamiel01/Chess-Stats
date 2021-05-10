@@ -1,17 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from functions import *
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
 @app.route('/', methods=['POST', 'GET'])
-def getUsername():
-    text = request.form['text']
-    processed_text = text.trim()
-    return processed_text
+def home():
+    if request.method == 'POST':
+        USERNAME = request.form['fname']
+        searchword = request.args.get('fname', '')
+        return str(rapid(USERNAME))
+    else:
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
