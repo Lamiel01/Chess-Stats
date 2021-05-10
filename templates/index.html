@@ -7,13 +7,15 @@
     <title>ChesStats</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet"> 
-    <link href="{{ url_for('static', filename='stylesheets/styles.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
 </head>
 <body>
     <p>Put your username below</p>
-    <form action="" method="GETUSERNAME">
-        <input type="text">
-    </form>
-    <button class="styled" name="button">Send</button>
+    <div>
+        <form action="/" method="POST">
+            <input required type="text" name="fname" id="user" placeholder="Your username">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
